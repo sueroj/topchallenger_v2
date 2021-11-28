@@ -1,0 +1,7 @@
+.footer {
+    bottom: 0;
+    height: 50px;
+    margin-top: 3px;
+    background-color: grey;
+    box-shadow: 2px 2px 2px black;
+}

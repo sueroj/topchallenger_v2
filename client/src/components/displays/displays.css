@@ -1,0 +1,14 @@
+.displays {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+}
+
+.wr-columns {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
