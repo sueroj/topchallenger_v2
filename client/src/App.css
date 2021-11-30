@@ -24,6 +24,10 @@
   color: white;
 }
 
+.container-fluid {
+  background-color: rgb(93, 84, 84);
+}
+
 .App-link {
   color: #61dafb;
 }

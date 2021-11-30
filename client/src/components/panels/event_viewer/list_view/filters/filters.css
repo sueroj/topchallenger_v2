@@ -1,0 +1,9 @@
+.filters {
+    display: flex;
+    height: 300px;
+    width: 150px;
+    background-color: rgb(124, 121, 121);
+    box-shadow: 2px 2px 2px black;
+    text-align: center;
+    border-radius: 3px;
+}

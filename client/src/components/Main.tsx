@@ -5,7 +5,7 @@ import './main.css';
 
 import Navigation from './navigation/Navigation'
 import Footer from './footer/Footer';
-import Displays from './displays/Displays';
+import Panels from './panels/Panels';
 import { GeoJSON } from 'core/objects/misc';
 
 
@@ -33,7 +33,7 @@ export default function Main() {
     return (
         <div className='main'>
             <Navigation profile={profile} />
-            <Displays />
+            <Panels />
             <Footer/>
         </div>
     );
