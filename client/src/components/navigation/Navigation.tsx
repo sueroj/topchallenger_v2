@@ -35,9 +35,10 @@ export default function Navigation(props: Props) {
         <AboutModal show={viewModal}/>
 
         <div className='navigation-bar'>
-                <Link href="/dashboard">E-Sportives</Link>
+                <Link href="/">E-Sportives</Link>
                 <Link onClick={() => toggleAboutModal()}>User Guide</Link>
-                <Link onClick={() => toggleAboutModal()}>About</Link>
+                <Link onClick={() => toggleAboutModal()}>Rankings</Link>
+                <Link onClick={() => toggleAboutModal()}>Statistics</Link>
             <div className='nav-fill'></div>
             <div className='nav-profile'>
                 <span>{props.profile.firstname}</span>

@@ -1,0 +1,11 @@
+.event-views-selection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.event-views {
+    display: flex;
+    flex-direction: row;
+    max-height: 100%;
+}

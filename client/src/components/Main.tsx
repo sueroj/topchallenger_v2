@@ -12,6 +12,7 @@ import { GeoJSON } from 'core/objects/misc';
 export default function Main() {
     const http = new Http()
     const [profile, set_profile] = useState(get_profile())
+    const events_table = useState(get_events_table)
 
     useEffect(() => {
         set_profile(get_profile())
@@ -24,6 +25,13 @@ export default function Main() {
         
         // TODO: Test only
          return new Profile()
+    }
+
+    function get_events_table() {
+        // Http action
+        // Get events from server upon initial login or refresh (eval storing of events in user's page session)
+
+        // return new EventsTable()
     }
 
     // Update profile from latest activities

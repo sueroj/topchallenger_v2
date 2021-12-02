@@ -1,14 +1,15 @@
 .thumbnail {
-    display: inline-block;
     height: 100px;
     width: 100px;
+    min-width: 100px;
     background-color: tomato;
     text-align: center;
-    margin: 2px;
-    margin-left: 5px;
+    margin: 1%;
+    border: unset;
     border-radius: 3px;
     box-shadow: 2px 2px 2px black;
-    border: unset;
+    line-height: normal;
+    overflow: hidden;
 }
 
 .thumbnail:hover {

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: inherit;
 }
 
 .App-logo {
@@ -26,6 +27,7 @@
 
 .container-fluid {
   background-color: rgb(93, 84, 84);
+  height: inherit;
 }
 
 .App-link {

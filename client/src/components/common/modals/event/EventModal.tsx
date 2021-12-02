@@ -1,30 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import './event_modal.css'
 
 function getActivities(): void {
 }
 
 export default function EventModal(props: any) {
     return (
-        <Modal className="event-modal" onShow={() => getActivities()}
+        <Modal className="event-modal" onHide={() => getActivities()} onShow={() => getActivities()}
             {...props}
-            // onHide={() => props.toggleActivityModal()}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
+            centered>
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    <h4>Event</h4>
+                    <div className="event-modal-title">
+                        test
+                    </div>
                 </Modal.Title>
             </Modal.Header>
 
+            <span className="event-modal-difficulty">Difficulty: 2</span>
             <Modal.Body>
-                <span>body</span>
+                <div id="miniMap" className="event-modal-map">
+                    map
+                </div>
+
+                <div className="event-modal-details">
+                    details
+                </div>
             </Modal.Body>
 
-            <Modal.Footer className="activity-sync-modal-footer">
-                <span>footer</span>
+            <Modal.Footer>
+                footer
             </Modal.Footer>
         </Modal>
     );

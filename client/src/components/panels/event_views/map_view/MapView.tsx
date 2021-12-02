@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './map_view.css';
 
-import Filters from 'components/panels/event_viewer/list_view/filters/Filters'
+import Filters from 'components/panels/event_views/list_view/filters/Filters'
 // import Map from 'core/libs/map'
 
 type Props = {
