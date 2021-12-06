@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './featured.css';
 
-type Props = {
+import Events from 'core/libs/events'
+import Carousel from 'components/panels/featured/carousel/Carousel'
+import Countdown from 'components/panels/featured/countdown/Countdown'
 
+type Props = {
+    events: Events
 }
 
 export default function Featured(props: Props) {
 
     return (
-        <div className='featured'>
-            
-            {/* Events carousel*/}
+        <div className='featured'>    
+            {/* Events carousel */}
+            <Carousel />
 
-            {/* Hidden Static Banner*/}
+            {/* Events countdown */}
+            <Countdown />
 
-            <div className='wr-columns'>
-            </div>
+            {/* <div className='wr-columns'> */}
         </div>
     );
 }

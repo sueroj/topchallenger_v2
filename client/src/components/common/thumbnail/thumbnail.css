@@ -1,6 +1,6 @@
 .thumbnail {
     height: 100px;
-    width: 100px;
+    width: 140px;
     min-width: 100px;
     background-color: tomato;
     text-align: center;
@@ -10,8 +10,22 @@
     box-shadow: 2px 2px 2px black;
     line-height: normal;
     overflow: hidden;
+    padding: 2px;
 }
 
 .thumbnail:hover {
     background-color: rgb(88, 116, 199);
+}
+
+.thumbnail-info-display {
+    display: flex;
+    flex-direction: row;
+}
+
+.thumbnail-horizontal-divider {
+    width: 100%;
+}
+
+.thumbnail-vertical-divider {
+    height: 50px;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './map_view.css';
+import './calendar_view.css';
 
 import Events from 'core/libs/events';
 import Filters from 'components/panels/event_views/list_view/filter/Filter'
@@ -9,7 +9,7 @@ type Props = {
     events: Events
 }
 
-export default function MapView(props: Props) {
+export default function CalendarView(props: Props) {
 
     useEffect(() => {
         // const map: Map = new Map().draw()
@@ -17,9 +17,8 @@ export default function MapView(props: Props) {
     )
 
     return (
-        <div className='map-view'>
-            {/* Mapbox */}
-            <div id='map' className='map'></div>
+        <div className='calendar-view'>
+            Calendar
         </div>
     );
 }

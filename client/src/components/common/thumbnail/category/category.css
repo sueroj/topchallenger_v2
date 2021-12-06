@@ -1,0 +1,11 @@
+/* TODO: Add to color scheme options */
+
+.category {
+    background-color: silver;
+    height: 100%;
+    width: 60px;
+    border-radius: 3px;
+    font-size: 11px;
+    padding-inline: 2px;
+    border: 1px solid black;
+}

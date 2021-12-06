@@ -1,8 +1,6 @@
 .featured {
-    background-color: greenyellow;
-    min-height: 150px;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    box-shadow: 2px 2px 2px black;
-    border-radius: 3px;
-    margin-bottom: 15px;
+    height: 330px;
 }
