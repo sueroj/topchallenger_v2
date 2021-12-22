@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './calendar_view.css';
 
 import Events from 'core/libs/events';
-import Filters from 'components/panels/event_views/list_view/filter/Filter'
+import Filters from 'components/panels/event_views/filter/Filter'
 // import Map from 'core/libs/map'
 
 type Props = {

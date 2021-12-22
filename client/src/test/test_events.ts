@@ -56,9 +56,9 @@ export class TestCompletedEvents {
 
     public constructor() {
         this.events = [
-            new CompletedEvent().test(111111, CompleteStatus.NOT_COMPLETE),
+            new CompletedEvent().test(111111, CompleteStatus.STANDARD),
             new CompletedEvent().test(111112, CompleteStatus.GOLD),
-            new CompletedEvent().test(111113, CompleteStatus.NOT_COMPLETE),
+            new CompletedEvent().test(111113, CompleteStatus.STANDARD),
             new CompletedEvent().test(111114, CompleteStatus.GOLD),
             new CompletedEvent().test(111115, CompleteStatus.SILVER),
             new CompletedEvent().test(111116, CompleteStatus.GOLD),

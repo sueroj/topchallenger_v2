@@ -5,3 +5,7 @@
     border-radius: 3px;
     box-shadow: 2px 2px 2px black;
 }
+
+.map {
+    height: 100%;
+}

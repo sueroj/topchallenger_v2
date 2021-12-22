@@ -1,3 +1,5 @@
+/* Thumbnail Main */
+
 .thumbnail {
     height: 100px;
     width: 140px;
@@ -28,4 +30,51 @@
 
 .thumbnail-vertical-divider {
     height: 50px;
+}
+
+/* Completion Icon */
+
+.complete, .complete-canvas {
+    /* background-color: silver; */
+    min-height: 30px;
+    min-height: 30px;
+    max-height: 30px;
+    max-height: 30px;
+}
+
+
+/* Category Icon */
+
+/* TODO: Add to color scheme options */
+
+.category {
+    background-color: silver;
+    height: 100%;
+    width: 60px;
+    border-radius: 3px;
+    font-size: 11px;
+    padding-inline: 2px;
+    border: 1px solid black;
+}
+
+/* Difficulty Icon */
+
+.difficulty {
+    height: 100%;
+    border-radius: 3px;
+    font-size: 11px;
+    padding-inline: 2px;
+    
+}
+
+/* Status Timer */
+
+.status-timer {
+    background-color: silver;
+    height: 100%;
+    width: 60px;
+    border-radius: 3px;
+    font-size: 11px;
+    padding-inline: 2px;
+    border: 1px solid black;
 }

@@ -1,4 +1,4 @@
-.event-views-selection {
+.event-views-primary {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -7,5 +7,5 @@
 .event-views {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    height: 650px;
 }

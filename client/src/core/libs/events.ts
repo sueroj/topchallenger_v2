@@ -40,11 +40,20 @@ export default class Events {
     }
 
     // TODO: Update filter types after TestEvents is removed
-    public list_filtered() {
+    public list_filtered(events_filter: EventsFilter) {
         let filtered: any[] = []
-
+        console.log(events_filter)
         this.events.all_events.forEach(event => {
-            if (event.category === Category.ZONE) {
+            if (event.category === Category.ZONE && events_filter.zone) {
+                filtered.push(event)
+            }
+            if (event.category === Category.COURSE && events_filter.course) {
+                filtered.push(event)
+            }
+            if (event.category === Category.SPRINT && events_filter.sprint) {
+                filtered.push(event)
+            }
+            if (event.category === Category.MILESTONE && events_filter.milestone) {
                 filtered.push(event)
             }
         })

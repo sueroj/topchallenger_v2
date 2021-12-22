@@ -17,11 +17,11 @@ export default function Main() {
     const [events, set_events] = useState(get_events())
 
     // TODO: Eval if this action is performed twice
-    useEffect(() => {
-        set_profile(get_profile())
-        set_events(get_events())
-    }, []
-    )
+    // useEffect(() => {
+    //     set_profile(get_profile())
+    //     set_events(get_events())
+    // }, []
+    // )
 
     // TODO: Eval if possible to store profile & events in global objects
     // TODO: instead of being passed down component order

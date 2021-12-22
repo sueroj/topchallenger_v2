@@ -3,15 +3,32 @@ import EventModal from '../modals/event/EventModal';
 import './thumbnail.css';
 
 import { Milestone, Zone, Course, Sprint } from 'core/objects/event'
-import Completion from 'components/common/thumbnail/completion/Complete'
-import Category from 'components/common/thumbnail/category/Category'
-import Difficulty from 'components/common/thumbnail/difficulty/Difficulty'
-import StatusTimer from 'components/common/thumbnail/status_timer/StatusTimer'
+import { Event } from 'core/objects/event'
+import { CompleteStatus } from 'core/enums/enums'
+import CompleteCanvas from 'core/canvas/complete'
+import { Category as CategoryEnumTypes } from 'core/enums/enums'
 
-// TODO: set types
 type Props = {
     event: Milestone | Zone | Course | Sprint
 }
+
+type CompleteProps = {
+    event: Event
+   }
+
+   type CategoryProps = {
+    category: CategoryEnumTypes
+}
+
+type DifficultyProps = {
+    difficulty: number
+}
+
+type StatusTimerProps = {
+    event: Milestone | Zone | Course | Sprint
+}
+
+
 
 export default function Thumbnail(props: Props) {
     const event = props.event
@@ -26,7 +43,7 @@ export default function Thumbnail(props: Props) {
             <EventModal show={event_modal}/>
 
             <div className='thumbnail-info-display'>
-                <Completion event={event}/>
+                <Complete event={event}/>
                 <div className='thumbnail-horizontal-divider'/>
                 <Category category={event.category}/>
             </div>
@@ -39,5 +56,111 @@ export default function Thumbnail(props: Props) {
                 <StatusTimer event={event}/>
             </div>
         </button>
+    );
+}
+
+export function Complete(props: CompleteProps) {
+    const event = props.event
+    const [canvas, set_canvas] = useState(draw_complete_canvas())
+
+    useEffect(() => {
+        console.log('Complete: use effect()')
+        if (event.complete_status === CompleteStatus.NOT_COMPLETE) {
+            set_canvas(<canvas />)
+        } else {
+            // TODO: Eval use of height and width styles
+            let canvas = new CompleteCanvas().render(event.id, event.complete_status)
+            set_canvas(<canvas className='complete-canvas' id={canvas.canvas_id} height='50' width='50'/>)
+        }
+    }, [event]
+    )
+
+
+    // TODO: FIX THIS. Events order not correct. List renders twice, useEffect not right. See console log, 
+    // TODO:  consider refactor of CompleteCanvas(). CompleteStatus is not updated on first render because
+    // TODO:  Main 
+
+    function draw_complete_canvas(): JSX.Element | null {
+        if (event.complete_status === CompleteStatus.NOT_COMPLETE) {
+            return null
+        } else {
+            // TODO: Eval use of height and width styles
+            let canvas = new CompleteCanvas().render(event.id, event.complete_status)
+            return <canvas className='complete-canvas' id={canvas.canvas_id} height='50' width='50'/>
+        }
+    }
+
+    return (
+        <div className='complete'>
+
+            {/* Tooltip showing datetime completed and time, if timed event */}
+            {/* { draw_complete_canvas() } */}
+            { canvas }
+            {console.log('Complete: draw canvas')}
+
+        </div>
+    );
+}
+
+export function Category(props: CategoryProps) {
+    const category = props.category
+
+    return (
+        <div className='category'>
+            {/* Tooltip showing datetime completed and time, if timed event */}
+            {category}
+        </div>
+    );
+}
+
+export function Difficulty(props: DifficultyProps) {
+    const difficulty = props.difficulty
+
+    function draw_difficulty() {
+        let output: any[] = []
+
+        for (let i = 0; i < difficulty; i++) {
+            output.push(<span>&#x2605;</span>)
+        }
+        return output
+    }
+
+    return (
+        <div className='difficulty'>
+
+            {/* TODO: Add tooltip */}
+            {/* Tooltip showing difficulty breakdown based on event metrics*/}
+            {draw_difficulty()}
+
+        </div>
+    );
+}
+
+export function StatusTimer(props: StatusTimerProps) {
+    const event = props.event
+
+    useEffect(() => {
+
+    }, []
+    )
+
+    // TODO: Color format for Open and Timer
+    // TODO: Open: white on green, Timer: white on blue (experiment)
+
+    function set_timer() {
+        return 'T-00:15:31'
+    }
+
+    return (
+        <div className='status-timer'>
+            {/* TODO time tooltip - include timezone (i.e. BST) add note to footer, all times in BST */}
+            {/* Tooltip showing time in standard format */}
+
+            {/* State Open, if open, or countdown timer until event is open */}
+            {/* {event.is_open ? 'Open' : set_timer()} */}
+
+            {/* DEBUG ONLY */}
+            T-00:15:31
+        </div>
     );
 }
