@@ -48,7 +48,7 @@ export default function Main() {
     return (
         <div className='main'>
             <Navigation profile={profile} />
-            <Panels events={events}/>
+            <Panels profile={profile} events={events}/>
             <Footer/>
         </div>
     );

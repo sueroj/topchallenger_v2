@@ -6,7 +6,7 @@ const DEFAULT_ZOOM: number = 5
 const DEFAULT_START_LNG: number = 0.17
 const DEFAULT_START_LAT:  number = 52.18
 
-export default class Map {
+export default class Mapbox {
     public start_lng: number = DEFAULT_START_LNG
     public start_lat: number = DEFAULT_START_LAT
     public zoom: number = DEFAULT_ZOOM

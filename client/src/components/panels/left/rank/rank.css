@@ -1,0 +1,39 @@
+.rank-panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 5px;
+    background-color: rgb(168, 168, 168);
+    box-shadow: 2px 2px 2px black;
+    border-radius: 3px;
+}
+
+.rank-header {
+    text-align: center;
+}
+
+.header-rank {
+    font-size: 24px;
+    text-align: center;
+}
+
+.header-league {
+    height: 20px;
+    font-size: 12px;
+}
+
+.rank-emblem {
+    height: 40%;
+    background-color: blue;
+}
+
+.rank-progress-bar {
+    height: 20%;
+    background-color: rgb(112, 112, 168);
+}
+
+.profile-title {
+    height: 20%;
+    background-color: rgb(168, 148, 112);
+}

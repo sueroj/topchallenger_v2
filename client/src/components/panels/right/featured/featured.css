@@ -1,0 +1,25 @@
+.featured {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 15%;
+    background-color: greenyellow;
+    box-shadow: 2px 2px 2px black;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.countdown, .carousel {
+    background-color: greenyellow;
+    width: 100%;
+    box-shadow: 2px 2px 2px black;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+.countdown {
+    height: 100px;
+}
+
+.carousel {
+    height: 200px;
+}
