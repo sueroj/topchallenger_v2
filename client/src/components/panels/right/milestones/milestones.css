@@ -1,0 +1,52 @@
+.milestones-panel {
+
+    width: 100%;
+    /* min-height: 300px; */
+    height: 25%;
+    margin-bottom: 5px;
+    background-color: rgb(168, 168, 168);
+    box-shadow: 2px 2px 2px black;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+.milestones-panel-header {
+    text-align: center;
+}
+
+.milestones-panel-spacer {
+    height: 20px;
+}
+
+
+/* Thumbnails List */
+
+.milestones-panel-thumbnail-header {
+    font-size: 12px;
+    text-align: center;
+}
+
+.thumbnail-list-short {
+    height: 60px;
+    background-color: purple; /* TODO: Debug only */
+}
+
+/* Progress Bars */
+
+.milestone-progress-bar {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.milestone-progress-bar-left {
+    width: 30%;
+    height: 10px;
+}
+
+.milestone-progress-bar-right {
+    width: 70%;
+    height: 10px;
+}

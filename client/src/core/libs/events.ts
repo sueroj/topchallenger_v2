@@ -1,15 +1,21 @@
 
 import TestEvents from "test/test_events"
-import { Category } from "core/enums/enums"
+import { EventCategory } from "core/enums/enums"
 import PROFILE, { Profile } from 'core/objects/profile'
-import { CompletedEvent, Milestone, Zone, Course, Sprint } from 'core/objects/event'
+import { CompletedEvent, Milestone, Zone, Course } from 'core/objects/event'
 
-export type AllEventCategories = Milestone[] | Zone[] | Course[] | Sprint[]
+export type AllEventCategories = Milestone[] | Zone[] | Course[] | []
+export type MappableEventCategories = Zone[] | Course[]
+
 type EventTable = {
     all_events: AllEventCategories,
-    completed_events: CompletedEvent[]
+    mappable_events: MappableEventCategories
+    zones: Zone[]
+    courses: Course[]
+    milestones: Milestone[]
 }
 
+// TODO: Refactor Events Filter. Make easier
 export class EventsFilter {
     public zone: boolean = true
     public course: boolean = true
@@ -31,32 +37,44 @@ export default class Events {
         completed: true
     }
 
-    public constructor() {
-        this.update_completed_events()
-    }
-
     public list_all() {
         return this.events.all_events
+    }
+
+    public list_mappable() {
+        return this.events.mappable_events
+    }
+
+    public get_recent_milestones() {
+
+        let milestones: Milestone[] = []
+        this.events.milestones.forEach(event => {
+            if (event.is_complete) {
+                milestones.push(event)
+            }
+        })
+
+        console.log(milestones) // TODO: STOPPED HERE
     }
 
     // TODO: Update filter types after TestEvents is removed
     public list_filtered(events_filter: EventsFilter) {
         let filtered: any[] = []
-        console.log(events_filter)
-        this.events.all_events.forEach(event => {
-            if (event.category === Category.ZONE && events_filter.zone) {
-                filtered.push(event)
-            }
-            if (event.category === Category.COURSE && events_filter.course) {
-                filtered.push(event)
-            }
-            if (event.category === Category.SPRINT && events_filter.sprint) {
-                filtered.push(event)
-            }
-            if (event.category === Category.MILESTONE && events_filter.milestone) {
-                filtered.push(event)
-            }
-        })
+        // console.log(events_filter)
+        // this.events.all_events.forEach(event => {
+        //     if (event.category === Category.ZONE && events_filter.zone) {
+        //         filtered.push(event)
+        //     }
+        //     if (event.category === Category.COURSE_STARDARD && events_filter.course) {
+        //         filtered.push(event)
+        //     }
+        //     if (event.category === Category.COURSE_SPRINT && events_filter.sprint) {
+        //         filtered.push(event)
+        //     }
+        //     if (event.category === Category.MILESTONE && events_filter.milestone) {
+        //         filtered.push(event)
+        //     }
+        // })
 
         // function fn(filter_type: boolean, events: any[]) {
         //     if (filter_type) {
@@ -72,22 +90,51 @@ export default class Events {
 
     private get_events() {
         // Http get action from server
+        // TODO: Replace w/ http action
 
-        let test_event = new TestEvents()
+        let test_all_events = new TestEvents().events
+        test_all_events = this.update_completed_events(test_all_events)
+        let zones_list: Zone[] = []
+        let courses_list: Course[] = []
+        let milestones_list: Milestone[] = []
+        let mappable_list: MappableEventCategories = []
+
+        test_all_events.forEach(event => {
+            switch (event.category_major) {
+                case EventCategory.ZONE:
+                    zones_list.push(event)
+                    break
+                case EventCategory.COURSE:
+                    courses_list.push(event)
+                    break
+                case EventCategory.MILESTONE:
+                    milestones_list.push(event)
+                    break
+            }
+            
+            if (event.is_mappable) {
+                mappable_list.push(event)
+            }
+        })
+
         return {
-            all_events: test_event.events,
-            completed_events: test_event.completed_events
+            all_events: test_all_events,
+            mappable_events: mappable_list,
+            zones: zones_list,
+            courses: courses_list,
+            milestones: milestones_list,
         }
     }
 
-    private update_completed_events() {
+    private update_completed_events(events: Milestone[] | Zone[] | Course[]) {
         this.profile.completed_events.forEach(completed_event => {
-            this.events.all_events.forEach(event => {
+            events.forEach(event => {
                 if (completed_event.id === event.id) {
                     event.is_complete = true
-                    event.complete_status = completed_event.completion_status
+                    event.complete_status = completed_event.complete_status
                 }
             })
-        })    
+        })
+        return events
     }
 }

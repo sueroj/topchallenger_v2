@@ -35,7 +35,7 @@ export default function Navigation(props: Props) {
         <AboutModal show={viewModal}/>
 
         <div className='navigation-bar'>
-                <Link href="/">E-Sportives</Link>
+                <Link href="/">TopChallenger</Link>
                 <Link onClick={() => toggleAboutModal()}>User Guide</Link>
                 <Link onClick={() => toggleAboutModal()}>Rankings</Link>
                 <Link onClick={() => toggleAboutModal()}>Statistics</Link>

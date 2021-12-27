@@ -10,7 +10,13 @@ import { TestCompletedEvents } from 'test/test_events'
 
 type CompletedEvent = {
     id: number
-    completion_status: CompleteStatus
+    complete_status: CompleteStatus
+}
+
+type Title = {
+    first: string,
+    middle: string,
+    last: string
 }
 
 export class Profile {
@@ -18,10 +24,13 @@ export class Profile {
     public firstname: string = 'Joel'
     public lastname: string = 'Suero'
     public rank: number = 7
+    public rp: number = 106 // TODO: RP is total of all earned, rank level is calc from there
     public league: League = League.GOLD
-    public title: {} = {
+
+    // TODO: Feature for unlockable title combinations, to be shown on the leader boards
+    public title: Title = {
         first: 'Ultra',
-        middle: 'Cycle',
+        middle: 'Marathon',
         last: 'Dude'
     }
     // public home: City = ''

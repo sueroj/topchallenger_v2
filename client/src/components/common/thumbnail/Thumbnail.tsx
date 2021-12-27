@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import EventModal from '../modals/event/EventModal';
 import './thumbnail.css';
 
-import { Milestone, Zone, Course, Sprint } from 'core/objects/event'
+import { Milestone, Zone, Course } from 'core/objects/event'
 import { Event } from 'core/objects/event'
 import { CompleteStatus } from 'core/enums/enums'
 import CompleteCanvas from 'core/canvas/complete'
-import { Category as CategoryEnumTypes } from 'core/enums/enums'
+import { EventCategory as CategoryEnumTypes } from 'core/enums/enums'
 
 type Props = {
-    event: Milestone | Zone | Course | Sprint
+    event: Milestone | Zone | Course
 }
 
 type CompleteProps = {
@@ -25,7 +25,7 @@ type DifficultyProps = {
 }
 
 type StatusTimerProps = {
-    event: Milestone | Zone | Course | Sprint
+    event: Milestone | Zone | Course
 }
 
 
@@ -45,7 +45,7 @@ export default function Thumbnail(props: Props) {
             <div className='thumbnail-info-display'>
                 <Complete event={event}/>
                 <div className='thumbnail-horizontal-divider'/>
-                <Category category={event.category}/>
+                <Category category={event.category_major}/>
             </div>
 
             <div className='thumbnail-vertical-divider' />

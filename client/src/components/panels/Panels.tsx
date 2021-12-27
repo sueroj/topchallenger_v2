@@ -6,11 +6,12 @@ import './panels.css';
 import EventLog from 'components/panels/left/event_log/EventLog'
 import Thumbnail from 'components/common/thumbnail/Thumbnail'
 import Map from 'components/panels/map/Map'
-import Rank from 'components/panels/left/rank/Rank';
-import Stats from 'components/panels/left/stats/Stats'
+import Rank from 'components/panels/left/rank/Rank'
+import Items from 'components/panels/left/items/Items'
 import Recent from 'components/panels/left/recent/Recent'
 import Calendar from 'components/panels/right/calendar/Calendar'
 import Featured from 'components/panels/right/featured/Featured'
+import Milestones from 'components/panels/right/milestones/Milestones'
 import Leaderboards from 'components/panels/right/leaderboards/Leaderboards';
 
 import { Profile } from 'core/objects/profile'
@@ -47,8 +48,8 @@ export default function Panels(props: Props) {
                 {/* Profile Rank panel */}
                 <Rank profile={props.profile} />
 
-                {/* Stats and achievements panel */}
-                <Stats />
+                {}
+                <Items />
 
                 {/* Recent activity log and information*/}
                 <Recent />
@@ -61,7 +62,7 @@ export default function Panels(props: Props) {
 
             <div className='panels-center'>
                 {/* Main map */}
-                <Map />
+                <Map events={props.events}/>
             </div>
 
             <div className='panels-divider'/>
@@ -73,6 +74,9 @@ export default function Panels(props: Props) {
 
                 {/* Featured events carousel, include news and ads */}
                 <Featured events={props.events} />
+
+                {/* Stats and achievements panel */}
+                <Milestones events={props.events}/>
 
                 {/* Leaderboards with filters */}
                 <Leaderboards />

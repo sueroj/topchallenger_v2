@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import './recent.css';
+import './items.css';
 
 type Props = {
 
 }
 
-export default function Recent(props: Props) {
+export default function Items(props: Props) {
 
     useEffect(() => {
 
@@ -13,8 +13,9 @@ export default function Recent(props: Props) {
     )
 
     return (
-        <div className='recent'>
-            Recent Activity
+        <div className='items'>
+            Items
+
         </div>
     );
 }

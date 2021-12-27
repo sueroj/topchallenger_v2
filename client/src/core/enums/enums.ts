@@ -4,14 +4,19 @@ export enum EventView {
     MAP
 }
 
-export enum Category {
+export enum EventCategory {
     EVENT = 'Event',
     ZONE = 'Zone',
-    SPRINT = 'Sprint',
-    MILESTONE = 'Milestone',
     COURSE = 'Course',
-    COURSE_OPEN_ZONE = 'Open Zone Course',
-    COURSE_LOOP_CHALLENGE = 'Loop Challenge Course'
+    MILESTONE = 'Milestone'
+}
+
+export enum CourseCategory {
+    STANDARD,
+    SPRINT,
+    LOOP,
+    OPEN_GUIDED,
+    OPEN_UNGUIDED
 }
 
 export enum CompleteStatus {

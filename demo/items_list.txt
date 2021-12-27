@@ -1,0 +1,68 @@
+Game Rules      		*Actual time/strength to be determined at game balancing
+
+- Main objective to explore and capture zones
+- Zone capture determined by state of either contested or uncontested
+- Zones captured are held for set minimum amount of time, with weekends opening up most zones
+  except for special zones and those protected by items*
+- Challenges events can be completed to gain RP and items that will help with zones captures in the game, see Item List
+- Lower tier items can also be gained through limited zone captures and 'item' chests placed on the map
+- Players are assigned to their respective hometown, though this may change.
+	- Ideas include player option to swap hometown once a week
+	- Or just using area of where activity began as hometown
+- Players of same town are grouped together.
+- Towns will compete against other town to advance their turf territoty.
+- Territory is advanced by capturing zones for your hometown, if zone is near other zones held by hometown
+  territory will advance (e.g. it should not be an isolated zone. Though isolated zone capture is possible)
+- Town with less players will get a series of handicaps to help vs larger towns/cities with more players
+- Via the game balancing and handicaps, protecting ones own town territory should be relatively, with occasional
+  encroachments by other towns
+- Ex: A player on holiday in Cornwall, could capture zones on behalf of Cambridge and vice-versa,
+  connect zones with draw turf ownership on map until recaptured or captured by other towns
+- Items add several abilities and modifiers to the game.
+
+
+
+
+Items List          		*Actual time/strength to be determined at game balancing
+
+- Zone Capture Flag (ZCF)
+	- Places a visualized "flag" on zone, selected by the player
+	- When placed starts a countdown timer until zone is captured by player
+	- *Time until capture is determined by rarity of the ZCF e.g. 5 day (Bronze) 3 day (Silver) 1 day (Gold)
+
+- Zone Capture Cancel (ZCC)
+	- Allow player to cancel a placed ZCF, *can be used on ANY zone (held/unheld)
+	- To be determined at game balancing
+
+- Zone Capture Spread Increaser (ZCSI)
+
+- Zone Protection Flag (ZPF)
+	- Zones with a ZPF are immune to capture for set time, as determined by rarity 
+	  e.g.  *1 day (Bronze) 3 days (Silver) 5 days (Gold)
+	- Common item awarded from zone captures (if item is offered)
+	- A typical player should have a few of these for their stratgic placement
+	- Player start with a few of these items
+
+- RP Booster (RPB)
+	- Adds a multiplier to gain RP for period of time *1 day (Bronze) 3 days (Silver) 5 days (Gold)
+	- Cannot be stacked
+
+- Turf Capture ---- (TCB)
+	- Places a '' on a location (can NOT be own home location) to capture nearest 4 zones
+	- *Time until capture is determined by rarity of the TCB e.g. 7 days (Bronze) 5 days (Silver) 3 days (Gold)
+
+- Turf --- Cancel (TBC)
+	- Allow player to cancel a placed TCB, *can only be used on own turf
+	- To be determined at game balancing
+
+- Key To The City (KEY)(Unique, 1 per town)
+	- This unique item represents that a player has captured a city, by owned the most zones in town and/or
+	  having the most accumulated points during events opened for set period, e.g. *2 weeks
+	- Players CAN hold multiple KEYs
+	- Having this item gives a unique icon to player profile on zone color, zone owner window, rank,
+	  leaderboard, event log etc
+	- This identifies the players will have to target in order to capture a town
+	- **Possible RP boost will be given while the key is held
+	- Icon should be a small golden key that is shown on all windows, events
+	- Zone will have unique gold/yellow border
+	- Awarded unique title: Mayor

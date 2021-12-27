@@ -1,6 +1,6 @@
 import { GeoJSON } from "core/objects/misc"
 
-import { Category, CompleteStatus } from "core/enums/enums"
+import { EventCategory, CourseCategory, CompleteStatus } from "core/enums/enums"
 
 export class EventsTable {
     // private http: Http = new Http()
@@ -15,13 +15,16 @@ export class EventsTable {
 export class Event {
     public id: number = 0
     public title: string = ''
-    public category: Category = Category.EVENT
+    public category_major: EventCategory = EventCategory.EVENT
+    public category_minor: any = null
     // TODO: debug only, reset to false
-    public coordinates: GeoJSON[] | null = null
+
+    public coordinates: GeoJSON[] = []
     public start_datetime: number = 0
     public stop_datetime: number = 0
     public difficulty: number = 0
 
+    public is_mappable: boolean = true
     public is_open: boolean = true
     public is_complete: boolean = true
     public complete_status: CompleteStatus = CompleteStatus.NOT_COMPLETE
@@ -42,51 +45,36 @@ export class Event {
     }
 }
 
-export class Milestone extends Event {
-    public constructor() {
-        super()
-        this.category = Category.MILESTONE
-    }
-}
-
 export class Zone extends Event {
     public constructor() {
         super()
-        this.category = Category.ZONE
+        this.category_major = EventCategory.ZONE
     }
 }
 
 export class Course extends Event {
-    public constructor() {
+    public constructor(category: CourseCategory) {
         super()
-        this.category = Category.COURSE
+        this.category_major = EventCategory.COURSE
+        this.category_minor = category
     }
 }
 
-// // tentative
-// export class OpenZoneCourse extends Event {
-
-// }
-
-// // tentative
-// export class LoopChallengeCourse extends Event {
-
-// }
-
-export class Sprint extends Event {
+export class Milestone extends Event {
     public constructor() {
         super()
-        this.category = Category.SPRINT
+        this.category_major = EventCategory.MILESTONE
+        this.is_mappable = false
     }
 }
 
 export class CompletedEvent {
     public id: number = 0
-    public completion_status = CompleteStatus.NOT_COMPLETE
+    public complete_status = CompleteStatus.NOT_COMPLETE
 
-    public test(id: number, completion_status: CompleteStatus) {
+    public test(id: number, complete_status: CompleteStatus) {
         this.id = id
-        this.completion_status = completion_status
+        this.complete_status = complete_status
         return this
     }
 }

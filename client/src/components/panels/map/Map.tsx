@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react';
 import './map.css';
 
 import Mapbox from 'core/libs/map';
+import Events, { MappableEventCategories } from 'core/libs/events'
 
 type Props = {
-    // events: Events
-    // thumbnails: any[]
+    events: Events
 }
 
 export default function Map(props: Props) {
+    const events = props.events
     
     useEffect(() => {
-        const map: Mapbox = new Mapbox().draw()
-    }, []
+        const map: Mapbox = new Mapbox(events).draw()
+    }, [events]
     )
 
     return (
