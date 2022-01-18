@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Http from 'core/libs/http';
 import Events from 'core/libs/events'
-import PROFILE from 'core/objects/profile';
+// import PROFILE from 'core/objects/profile';
 import './main.css';
 
 import Navigation from './navigation/Navigation'
 import Footer from './footer/Footer';
 import Panels from './panels/Panels';
 import { GeoJSON } from 'core/objects/misc';
-import Profile from 'core/objects/profile'
+// import Profile from 'core/objects/profile'
+import Profiles from 'core/libs/profiles';
 
 
 export default function Main() {
     const http = new Http()
-    const [profile, set_profile] = useState(get_profile())
+    const [profiles, set_profiles] = useState(get_profiles())
     const [events, set_events] = useState(get_events())
 
     // TODO: Eval if this action is performed twice
@@ -26,19 +27,19 @@ export default function Main() {
     // TODO: Eval if possible to store profile & events in global objects
     // TODO: instead of being passed down component order
 
-    function get_profile() {
+    function get_profiles() {
         // Http action
          // Get profile from server, if no profile, server will create new
         
         // TODO: Test only
-         return PROFILE
+         return new Profiles()
     }
 
     function get_events() {
         // Http action
         // Get events from server upon initial login or refresh (eval storing of events in user's page session)
         
-        return new Events()
+        return new Events(profiles.current)
     }
 
     // Update profile from latest activities
@@ -47,8 +48,8 @@ export default function Main() {
 
     return (
         <div className='main'>
-            <Navigation profile={profile} />
-            <Panels profile={profile} events={events}/>
+            <Navigation profile={profiles.current} />
+            <Panels profiles={profiles} events={events}/>
             <Footer/>
         </div>
     );

@@ -34,7 +34,11 @@ Items List          		*Actual time/strength to be determined at game balancing
 	- Allow player to cancel a placed ZCF, *can be used on ANY zone (held/unheld)
 	- To be determined at game balancing
 
-- Zone Capture Spread Increaser (ZCSI)
+- Zone Capture Increaser (ZCI)
+	- Speeds up time required to capture a zone.
+
+- Zone Capture Decrease (ZCD)
+	- Speeds up time required to capture a zone.
 
 - Zone Protection Flag (ZPF)
 	- Zones with a ZPF are immune to capture for set time, as determined by rarity 
@@ -47,11 +51,11 @@ Items List          		*Actual time/strength to be determined at game balancing
 	- Adds a multiplier to gain RP for period of time *1 day (Bronze) 3 days (Silver) 5 days (Gold)
 	- Cannot be stacked
 
-- Turf Capture ---- (TCB)
-	- Places a '' on a location (can NOT be own home location) to capture nearest 4 zones
+- Foreign Capture Flag (FCF)
+	- Places a FCF on a location (can NOT be own home location) to capture nearest 4 zones
 	- *Time until capture is determined by rarity of the TCB e.g. 7 days (Bronze) 5 days (Silver) 3 days (Gold)
 
-- Turf --- Cancel (TBC)
+- Foreign Capture Flag Cancel (FCFC)
 	- Allow player to cancel a placed TCB, *can only be used on own turf
 	- To be determined at game balancing
 
@@ -66,3 +70,8 @@ Items List          		*Actual time/strength to be determined at game balancing
 	- Icon should be a small golden key that is shown on all windows, events
 	- Zone will have unique gold/yellow border
 	- Awarded unique title: Mayor
+
+Other Items TBC:
+
+- Territory Capture Flag: Larger, more powerful version of ZCF. Captures more zones at once.
+- TCF Cancel

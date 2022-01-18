@@ -7,16 +7,20 @@ import { Event } from 'core/objects/event'
 import { CompleteStatus } from 'core/enums/enums'
 import CompleteCanvas from 'core/canvas/complete'
 import { EventCategory as CategoryEnumTypes } from 'core/enums/enums'
+import Item from 'core/objects/item'
+import Achievement from 'core/objects/achievement'
+
 
 type Props = {
-    event: Milestone | Zone | Course
+    // event: Milestone | Zone | Course
+    data: Milestone | Zone | Course | Item | Achievement
 }
 
 type CompleteProps = {
     event: Event
    }
 
-   type CategoryProps = {
+type CategoryProps = {
     category: CategoryEnumTypes
 }
 
@@ -28,34 +32,41 @@ type StatusTimerProps = {
     event: Milestone | Zone | Course
 }
 
-
+// STOPPED HERE, need to rework to allow for Item type to be accepted
+// Idea is to have Item type be drawn in thumbnail img same as any event type
+// switch to caetegory and rework thumbnail. e.g. Item thumbnail dont need Complete,
+// or Difficulty, but needs Tier and StatusTimer
 
 export default function Thumbnail(props: Props) {
-    const event = props.event
-    const [event_modal, set_event_modal] = useState(false)
+    // const event = props.event
+    const data = props.data
+    const [modal, set_modal] = useState(false)
 
-    function toggle_event_modal() {
-        set_event_modal(!event_modal)
+    function toggle_modal() {
+        set_modal(!modal)
     }
 
     return (
-        <button onClick={() => toggle_event_modal()} className='thumbnail'>
-            <EventModal show={event_modal}/>
+        <button onClick={() => toggle_modal()} className='thumbnail'>
 
-            <div className='thumbnail-info-display'>
-                <Complete event={event}/>
-                <div className='thumbnail-horizontal-divider'/>
-                <Category category={event.category_major}/>
-            </div>
-
-            <div className='thumbnail-vertical-divider' />
-
-            <div className='thumbnail-info-display'>
-                <Difficulty difficulty={event.difficulty}/>
-                <div className='thumbnail-horizontal-divider'/>
-                <StatusTimer event={event}/>
-            </div>
         </button>
+        // <button onClick={() => toggle_event_modal()} className='thumbnail'>
+            // <EventModal show={event_modal}/>
+
+            // <div className='thumbnail-info-display'>
+            //     <Complete event={event}/>
+            //     <div className='thumbnail-horizontal-divider'/>
+            //     <Category category={event.category_major}/>
+            // </div>
+
+            // <div className='thumbnail-vertical-divider' />
+
+            // <div className='thumbnail-info-display'>
+            //     <Difficulty difficulty={event.difficulty}/>
+            //     <div className='thumbnail-horizontal-divider'/>
+            //     <StatusTimer event={event}/>
+            // </div>
+        // </button>
     );
 }
 

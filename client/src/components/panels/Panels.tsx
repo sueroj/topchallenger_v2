@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './panels.css';
 
-
-
 import EventLog from 'components/panels/left/event_log/EventLog'
 import Thumbnail from 'components/common/thumbnail/Thumbnail'
 import Map from 'components/panels/map/Map'
@@ -11,15 +9,16 @@ import Items from 'components/panels/left/items/Items'
 import Recent from 'components/panels/left/recent/Recent'
 import Calendar from 'components/panels/right/calendar/Calendar'
 import Featured from 'components/panels/right/featured/Featured'
+import Achievements from 'components/panels/right/achievements/Achievements';
 import Milestones from 'components/panels/right/milestones/Milestones'
-import Leaderboards from 'components/panels/right/leaderboards/Leaderboards';
+import Leaderboards from 'components/panels/right/leaderboard/Leaderboard'
 
-import { Profile } from 'core/objects/profile'
+import Profiles from 'core/libs/profiles'
 import Events from 'core/libs/events'
 
 
 type Props = {
-    profile: Profile
+    profiles: Profiles
     events: Events
 }
 
@@ -29,8 +28,8 @@ export default function Panels(props: Props) {
 
     function generate_thumbnails(): any[] {
         let thumbnails: any[] = []
-        events.list_all().forEach(event => {
-            thumbnails.push(<Thumbnail event={event}/>)
+        events.get_all().forEach(event => {
+            thumbnails.push(<Thumbnail data={event}/>)
         })
 
         // let t: any[] = []
@@ -46,10 +45,10 @@ export default function Panels(props: Props) {
         <div className='panels'>
             <div className='panels-left'>
                 {/* Profile Rank panel */}
-                <Rank profile={props.profile} />
+                <Rank profile={props.profiles.current} />
 
-                {}
-                <Items />
+                {/* Available items for use*/}
+                <Items profile={props.profiles.current}/>
 
                 {/* Recent activity log and information*/}
                 <Recent />
@@ -75,11 +74,14 @@ export default function Panels(props: Props) {
                 {/* Featured events carousel, include news and ads */}
                 <Featured events={props.events} />
 
-                {/* Stats and achievements panel */}
+                {/* Milestone challenges featuring daily, weekly, monthly, and permanent*/}
                 <Milestones events={props.events}/>
 
+                {/* Stats and achievements panel */}
+                <Achievements profile={props.profiles.current} events={props.events}/>
+
                 {/* Leaderboards with filters */}
-                <Leaderboards />
+                <Leaderboards profiles={props.profiles}/>
 
             </div>
         </div>

@@ -1,6 +1,6 @@
 import { GeoJSON } from "core/objects/misc"
 
-import { EventCategory, CourseCategory, CompleteStatus } from "core/enums/enums"
+import { EventCategory, CourseCategory, MilestoneCategory, CompleteStatus } from "core/enums/enums"
 
 export class EventsTable {
     // private http: Http = new Http()
@@ -61,9 +61,10 @@ export class Course extends Event {
 }
 
 export class Milestone extends Event {
-    public constructor() {
+    public constructor(category: MilestoneCategory) {
         super()
         this.category_major = EventCategory.MILESTONE
+        this.category_minor = category
         this.is_mappable = false
     }
 }

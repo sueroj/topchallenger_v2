@@ -5,4 +5,18 @@
     box-shadow: 2px 2px 2px black;
     border-radius: 3px;
     margin-bottom: 5px;
+    padding: 2px;
+    overflow-y: hidden;
+}
+/* TODO: Eval change of height/width to static values */
+
+.items-header {
+    height: 10%;
+    text-align: center;
+}
+.items-table {
+    height: 90%;
+    width: 100%;
+    text-align: center;
+    background-color: purple; /* Debug Only */
 }

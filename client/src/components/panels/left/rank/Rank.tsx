@@ -3,7 +3,7 @@ import { Image } from 'react-bootstrap';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import './rank.css';
 
-import { Profile } from 'core/objects/profile'
+import Profile from 'core/objects/profile'
 import test_banner from 'assets/banners/test_banner.png'
 import test_profile_img from 'assets/banners/test_profile_img.png'
 

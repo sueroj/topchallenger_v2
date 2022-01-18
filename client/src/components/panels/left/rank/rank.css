@@ -26,6 +26,7 @@
 /* Rank Header */
 
 .header-rank {
+    height: 30px;
     font-size: 26px;
     text-align: center;
     overflow: hidden;
@@ -65,10 +66,11 @@
 /* Profile Title */
 
 .profile-title {
+    height: 15px;
     height: 20%;
     background-color: rgb(168, 148, 112);
     font-size: 12px;
     text-align: center;
     font-style: italic;
-    overflow-wrap: break-word;
+    overflow-y: hidden;
 }

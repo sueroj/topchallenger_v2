@@ -57,7 +57,7 @@ export default class Mapbox {
     }
 
     public draw_events() {
-        let mappable = this.events.list_mappable()
+        let mappable = this.events.get_mappable()
         let map = this.map
 
         console.log(mappable)

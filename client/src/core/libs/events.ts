@@ -1,19 +1,44 @@
 
-import TestEvents from "test/test_events"
-import { EventCategory } from "core/enums/enums"
-import PROFILE, { Profile } from 'core/objects/profile'
+import TestEvents, { TestFeaturedEvents } from "test/test_events"
+import { EventCategory, MilestoneCategory } from "core/enums/enums"
+import Profile from 'core/objects/profile'
 import { CompletedEvent, Milestone, Zone, Course } from 'core/objects/event'
+import { CategoryProgress } from "core/objects/misc"
 
 export type AllEventCategories = Milestone[] | Zone[] | Course[] | []
 export type MappableEventCategories = Zone[] | Course[]
 
+export type MilestoneCategories = {
+    all: Milestone[],
+    dailies: Milestone[],
+    weeklies: Milestone[],
+    monthlies: Milestone[]
+}
+
+export type MilestoneProgress = {
+    all: CategoryProgress,
+    dailies: CategoryProgress,
+    weeklies: CategoryProgress,
+    monthlies: CategoryProgress
+}
+
 type EventTable = {
     all_events: AllEventCategories,
-    mappable_events: MappableEventCategories
-    zones: Zone[]
-    courses: Course[]
-    milestones: Milestone[]
+    featured: AllEventCategories,
+    mappable_events: MappableEventCategories,
+    zones: Zone[],
+    courses: Course[],
+    // milestones: Milestone[]
+    milestones: MilestoneCategories // TODO: consider adding complete & all milestones
 }
+
+// type CategoryProgress = {
+//     all_events: AllEventCategories,
+//     complete: AllEventCategories,
+//     not_complete: AllEventCategories,
+//     // total_num_complete: number,
+//     // total_num_not_complete: number
+// }
 
 // TODO: Refactor Events Filter. Make easier
 export class EventsFilter {
@@ -27,8 +52,8 @@ export class EventsFilter {
 
 // TODO: Refactor & optimize this class. Will be used a lot.
 export default class Events {
-    private profile: Profile = PROFILE
-    private events: EventTable = this.get_events()
+    private profile: Profile
+    private events: EventTable
     public filter = {
         zone: true,
         course: true,
@@ -37,24 +62,31 @@ export default class Events {
         completed: true
     }
 
-    public list_all() {
+    public constructor(profile: Profile) {
+        this.profile = profile
+        this.events = this.get_events()
+    }
+
+    public get_all() {
         return this.events.all_events
     }
 
-    public list_mappable() {
+    public get_mappable() {
         return this.events.mappable_events
     }
 
-    public get_recent_milestones() {
+    public get_milestones() {
+        return this.events.milestones
+    }
 
-        let milestones: Milestone[] = []
-        this.events.milestones.forEach(event => {
-            if (event.is_complete) {
-                milestones.push(event)
-            }
-        })
-
-        console.log(milestones) // TODO: STOPPED HERE
+    public get_milestones_progress() { // TODO: STOPPED HERE, consider adding complete & all milestones
+        let milestones: MilestoneProgress = {
+            all: new CategoryProgress(this.events.milestones.all),
+            dailies: new CategoryProgress(this.events.milestones.dailies),
+            weeklies: new CategoryProgress(this.events.milestones.weeklies),
+            monthlies: new CategoryProgress(this.events.milestones.monthlies)
+        } 
+        return milestones
     }
 
     // TODO: Update filter types after TestEvents is removed
@@ -93,7 +125,9 @@ export default class Events {
         // TODO: Replace w/ http action
 
         let test_all_events = new TestEvents().events
+        let test_featured_events = new TestFeaturedEvents().events
         test_all_events = this.update_completed_events(test_all_events)
+        test_featured_events = this.update_completed_events(test_featured_events)
         let zones_list: Zone[] = []
         let courses_list: Course[] = []
         let milestones_list: Milestone[] = []
@@ -119,11 +153,28 @@ export default class Events {
 
         return {
             all_events: test_all_events,
+            featured: test_featured_events,
             mappable_events: mappable_list,
             zones: zones_list,
             courses: courses_list,
-            milestones: milestones_list,
+            // milestones: this.sort_by_subcategory(milestones_list),
+            milestones: {
+                all: milestones_list,
+                dailies: this.sort_by_subcategory(milestones_list, MilestoneCategory.DAILY),
+                weeklies: this.sort_by_subcategory(milestones_list, MilestoneCategory.WEEKLY),
+                monthlies: this.sort_by_subcategory(milestones_list, MilestoneCategory.MONTHLY)
+            }
         }
+    }
+
+    private sort_by_subcategory(milestones: Milestone[], category: MilestoneCategory) {
+        let sorted: Milestone[] = []
+        milestones.forEach(event => {
+            if (event.category_minor === category){
+                sorted.push(event)
+            }
+        })
+        return sorted
     }
 
     private update_completed_events(events: Milestone[] | Zone[] | Course[]) {
