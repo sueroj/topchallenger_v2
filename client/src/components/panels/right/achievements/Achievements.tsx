@@ -34,7 +34,7 @@ export default function Achievements(props: Props) {
     // TODO: Implement most recent achievements, e.g. achievements sorted by date of complement
     return (
         <div className='achievements-panel'>
-            <div className='achievements-panel-header'>Achievements</div>
+            <div className='right-panel-header'>Achievements</div>
 
             <div className='achievements-panel-thumbnail-header'>Most Recent</div>
             <ThumbnailListShort achievements={props.profile.achievements}/>

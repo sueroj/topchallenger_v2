@@ -27,9 +27,9 @@ export default class Profile {
     public id: number = 12345
     public firstname: string = 'Joel'
     public lastname: string = 'Suero'
-    public rank: number = 7
+    public rank: number = 75
     public rp: number = 106 // TODO: RP is total of all earned, rank level is calc from there
-    public league: League = League.GOLD
+    public league: League = League.DIAMOND
 
     // TODO: Feature for unlockable title combinations, to be shown on the leader boards
     public title: Title = {

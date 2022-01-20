@@ -33,7 +33,7 @@ export default function Milestones(props: Props) {
 
     return (
         <div className='milestones-panel'>
-            <div className='milestones-panel-header'>Milestone Challenges</div>
+            <div className='right-panel-header'>Milestone Challenges</div>
 
             <div className='milestones-panel-thumbnail-header'>Featured</div>
             <ThumbnailListShort milestones={props.events.get_milestones()}/>

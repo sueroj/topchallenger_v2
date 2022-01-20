@@ -14,7 +14,7 @@
 }
 
 .panels-divider {
-    width: 5px;
+    min-width: 5px;
 }
 
 .panels-center {
@@ -28,4 +28,13 @@
     flex-direction: column;
     width: 15%;
     margin-bottom: 5px;
+}
+
+/* Panel Headers */
+
+.right-panel-header {
+    width: 100%;
+    padding-inline: 5px;
+    text-align: right;
+    color: white;
 }

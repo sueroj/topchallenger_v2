@@ -1,7 +1,11 @@
+/* Achievements CSS
+
+Inherit left-panel-header
+
+*/
 .achievements-panel {
 
     width: 100%;
-    /* min-height: 300px; */
     height: 25%;
     margin-bottom: 5px;
     background-color: rgb(168, 168, 168);
@@ -10,14 +14,9 @@
     padding: 2px;
 }
 
-.achievements-panel-header {
-    text-align: center;
-}
-
 .achievements-panel-spacer {
     height: 20px;
 }
-
 
 /* Thumbnails List */
 

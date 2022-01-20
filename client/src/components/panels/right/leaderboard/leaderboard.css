@@ -16,10 +16,16 @@
 .leaderboard-table {
     height: 85%;
     background-color: purple; /* TODO: Debug only */
+    padding: 0px;
+    
 }
 
 .leaderboard-profile {
     width: 100%;
     height: 25px;
     background-color: orange;
+}
+
+.list-group-item {
+    padding: 1px;
 }

@@ -4,9 +4,8 @@
     /* min-height: 300px; */
     height: 25%;
     margin-bottom: 5px;
-    background-color: rgb(168, 168, 168);
+    background-color: rgb(106, 111, 116);
     box-shadow: 2px 2px 2px black;
-    border-radius: 3px;
     padding: 2px;
     overflow-y: hidden;
 }

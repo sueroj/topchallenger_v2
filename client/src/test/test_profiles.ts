@@ -6,6 +6,7 @@ export default class TestProfiles {
 
     private generate_profiles() {
         return [
+            new Profile().test_profile(12345, 'Joel', 'Suero', 75, 106, League.DIAMOND),
             new Profile().test_profile(2000, 'John', 'Smith', 40, 236, League.GOLD),
             new Profile().test_profile(2001, 'John', 'Gammon', 12, 236, League.GOLD),
             new Profile().test_profile(2002, 'James', 'Hill', 11, 236, League.GOLD),
