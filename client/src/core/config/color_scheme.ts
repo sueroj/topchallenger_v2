@@ -35,13 +35,13 @@ class ColorScheme {
 
     public get_completion_canvas(status: CompleteStatus) {
         switch (status) {
-            case CompleteStatus.STANDARD:
+            case CompleteStatus.STANDARD_T0:
                 return COMPLETE_CANVAS_STANDARD
-            case CompleteStatus.GOLD:
+            case CompleteStatus.GOLD_T3:
                 return COMPLETE_CANVAS_GOLD
-            case CompleteStatus.SILVER:
+            case CompleteStatus.SILVER_T2:
                 return COMPLETE_CANVAS_SILVER
-            case CompleteStatus.BRONZE:
+            case CompleteStatus.BRONZE_T1:
                 return COMPLETE_CANVAS_BRONZE
             default:
                 return COMPLETE_CANVAS_STANDARD

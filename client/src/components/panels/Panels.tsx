@@ -20,24 +20,17 @@ import Events from 'core/libs/events'
 type Props = {
     profiles: Profiles
     events: Events
+    toggles: {}
 }
 
 export default function Panels(props: Props) {
-    const events = props.events
     const [thumbnails, set_thumbnails] = useState(generate_thumbnails())
 
     function generate_thumbnails(): any[] {
         let thumbnails: any[] = []
-        events.get_all().forEach(event => {
+        props.events.get_all().forEach(event => {
             thumbnails.push(<Thumbnail data={event}/>)
         })
-
-        // let t: any[] = []
-        // for (let i = 0;i <= 24; i++) {
-        //     t.push(thumbnails[i])
-        // }
-        // return t
-        console.log('Panels: generate_thumbnails()')
         return thumbnails
     }
 
@@ -61,7 +54,7 @@ export default function Panels(props: Props) {
 
             <div className='panels-center'>
                 {/* Main map */}
-                <Map events={props.events}/>
+                <Map events={props.events} toggles={props.toggles} />
             </div>
 
             <div className='panels-divider'/>

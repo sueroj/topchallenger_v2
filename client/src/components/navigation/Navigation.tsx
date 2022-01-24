@@ -6,7 +6,6 @@ import './navigation.css';
 
 import Profile from 'core/objects/profile'
 import test_banner from 'assets/banners/test_banner.png'
-import AboutModal from 'components/common/modals/AboutModal'
 import Link from 'react-bootstrap/NavLink';
 
 type Props = {
@@ -32,7 +31,7 @@ export default function Navigation(props: Props) {
 
     return (
         <>
-        <AboutModal show={viewModal}/>
+        {/* <AboutModal show={viewModal}/> */}
 
         <div className='navigation-bar'>
                 <Link href="/">TopChallenger</Link>

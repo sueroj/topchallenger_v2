@@ -2,11 +2,14 @@
 import TestEvents, { TestFeaturedEvents } from "test/test_events"
 import { EventCategory, MilestoneCategory } from "core/enums/enums"
 import Profile from 'core/objects/profile'
-import { CompletedEvent, Milestone, Zone, Course } from 'core/objects/event'
+import { Milestone, Zone, Course } from 'core/objects/event'
 import { CategoryProgress } from "core/objects/misc"
 
 export type AllEventCategories = Milestone[] | Zone[] | Course[] | []
 export type MappableEventCategories = Zone[] | Course[]
+
+export type AnyEventCategory = Milestone | Zone | Course
+export type MappableEventCategory = Zone | Course
 
 export type MilestoneCategories = {
     all: Milestone[],

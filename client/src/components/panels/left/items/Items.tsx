@@ -18,6 +18,7 @@ export default function Items(props: Props) {
     function draw_thumbnails() {
         if (props.profile.items.length) {
             let t: any[] = []
+
             props.profile.items.forEach(item => {
                 t.push(<Thumbnail data={item} />)
             })

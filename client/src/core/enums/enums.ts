@@ -19,13 +19,7 @@ export enum CourseCategory {
     OPEN_UNGUIDED
 }
 
-export enum CompleteStatus {
-    NOT_COMPLETE,
-    STANDARD,
-    GOLD,
-    SILVER,
-    BRONZE
-}
+
 
 export enum League {
     NEWBIE = 'Newbie League',
@@ -42,16 +36,24 @@ export enum MilestoneCategory {
     MONTHLY,
 }
 
-export enum ItemCategory {
-    ZONE_CAPTURE_FLAG,
-    ZONE_CAPTURE_CANCEL,
-    ZONE_CAPTURE_INCREASER,
-    ZONE_CAPTURE_DECREASER,
-    ZONE_PROTECT_FLAG,
-    RP_BOOSTER,
-    FOREIGN_CAPTURE_FLAG,
-    FOREIGN_CAPTURE_CANCEL,
-    KEY_TO_THE_CITY
+export enum ItemType {
+    ZONE_CAPTURE_FLAG = 'zcf',
+    ZONE_CAPTURE_CANCEL = 'zcc',
+    ZONE_CAPTURE_INCREASER = 'zci',
+    ZONE_CAPTURE_DECREASER = 'zcd',
+    ZONE_PROTECT_FLAG = 'zpf',
+    RP_BOOSTER = 'rpb',
+    FOREIGN_CAPTURE_FLAG = 'fcf',
+    FOREIGN_CAPTURE_CANCEL = 'fcc',
+    KEY_TO_THE_CITY = 'kttc'
+}
+
+export enum CompleteStatus {
+    NOT_COMPLETE,
+    STANDARD_T0,
+    BRONZE_T1,
+    SILVER_T2,
+    GOLD_T3
 }
 
 export enum ItemTier {
@@ -59,4 +61,15 @@ export enum ItemTier {
     BRONZE_T1,
     SILVER_T2,
     GOLD_T3
+}
+
+// TODO: STILL needs fine tuning
+export enum AssetType {
+    // Items imported by enum ItemType
+    ITEM = 'items',
+    
+    // Below types imported by id number
+    BANNER = 'banners',
+    ACHIEVEMENT = 'achievements',
+    MILESTONE = 'milestones'
 }

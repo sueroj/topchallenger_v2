@@ -1,4 +1,4 @@
-Game Rules      		*Actual time/strength to be determined at game balancing
+wGame Rules      		*Actual time/strength to be determined at game balancing
 
 - Main objective to explore and capture zones
 - Zone capture determined by state of either contested or uncontested
@@ -58,6 +58,10 @@ Items List          		*Actual time/strength to be determined at game balancing
 - Foreign Capture Flag Cancel (FCFC)
 	- Allow player to cancel a placed TCB, *can only be used on own turf
 	- To be determined at game balancing
+
+- Zone Monitor (ZM)
+	- Reveal hidden stats about a Zone that is used for player stragety
+
 
 - Key To The City (KEY)(Unique, 1 per town)
 	- This unique item represents that a player has captured a city, by owned the most zones in town and/or

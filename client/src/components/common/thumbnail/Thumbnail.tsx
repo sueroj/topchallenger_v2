@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import EventModal from '../modals/event/EventModal';
+import Image from 'react-bootstrap/Image'
 import './thumbnail.css';
 
 import { Milestone, Zone, Course } from 'core/objects/event'
@@ -9,11 +9,16 @@ import CompleteCanvas from 'core/canvas/complete'
 import { EventCategory as CategoryEnumTypes } from 'core/enums/enums'
 import Item from 'core/objects/item'
 import Achievement from 'core/objects/achievement'
+import Modal from 'components/common/modal/Modal'
+
 
 
 type Props = {
-    // event: Milestone | Zone | Course
     data: Milestone | Zone | Course | Item | Achievement
+}
+
+type TierProps = {
+    tier: CompleteStatus
 }
 
 type CompleteProps = {
@@ -28,6 +33,10 @@ type DifficultyProps = {
     difficulty: number
 }
 
+type QuanitityProps = {
+    quantity: number
+}
+
 type StatusTimerProps = {
     event: Milestone | Zone | Course
 }
@@ -39,17 +48,42 @@ type StatusTimerProps = {
 
 export default function Thumbnail(props: Props) {
     // const event = props.event
-    const data = props.data
     const [modal, set_modal] = useState(false)
 
     function toggle_modal() {
         set_modal(!modal)
     }
 
-    return (
-        <button onClick={() => toggle_modal()} className='thumbnail'>
+    function bottom_left_select() {
+        if (props.data instanceof Item) {
+            return <Quantity quantity={props.data.quantity}/>
+        }
+    }
 
-        </button>
+    return (
+        <>
+            <Modal show={modal} toggle_modal={toggle_modal} />
+
+            <button className="thumbnail" onClick={toggle_modal}>
+                <Image className="thumbnail-img" src={props.data.img} alt={props.data.name} rounded />
+                {/* <Tier tier={props.data.tier} /> */}
+                {/* {props.completed.status ? completedBadgeSelect() :
+                    // Image style badges
+                    <Image className="badge-img" src={importAsset("scheme_geometric/badges", props.challenge.ChallengeId)} alt={props.challenge.Name} rounded />}
+                    {/* //  // Canvas style badges
+                    // <BadgeCanvas id={props.challenge.ChallengeId} challenge={props.challenge} useDefault={true} />} */}
+                {/* <div className="badge-rp">{props.challenge.Rp} RP</div>
+                <div className="badge-name-header">{props.challenge.Name}</div> */}
+
+                {/* Draw Difficulty (for events) or Quantity (for items) component */}
+                { bottom_left_select() }
+            </button>
+        </>
+
+        // <button onClick={() => toggle_modal()} className='thumbnail'>
+
+        // </button>
+
         // <button onClick={() => toggle_event_modal()} className='thumbnail'>
             // <EventModal show={event_modal}/>
 
@@ -67,6 +101,17 @@ export default function Thumbnail(props: Props) {
             //     <StatusTimer event={event}/>
             // </div>
         // </button>
+    );
+}
+
+export function Tier(props: CategoryProps) {
+    const category = props.category
+
+    return (
+        <div className='category'>
+            {/* Tooltip showing datetime completed and time, if timed event */}
+            {category}
+        </div>
     );
 }
 
@@ -147,8 +192,16 @@ export function Difficulty(props: DifficultyProps) {
     );
 }
 
+export function Quantity(props: QuanitityProps) {
+
+    return (
+        <div className='quantity'>
+            {props.quantity}
+        </div>
+    );
+}
+
 export function StatusTimer(props: StatusTimerProps) {
-    const event = props.event
 
     useEffect(() => {
 

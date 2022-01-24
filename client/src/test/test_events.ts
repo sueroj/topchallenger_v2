@@ -84,17 +84,17 @@ export class TestCompletedEvents {
 
     public constructor() {
         this.events = [
-            new CompletedEvent().test(111111, CompleteStatus.STANDARD),
-            new CompletedEvent().test(111112, CompleteStatus.GOLD),
-            new CompletedEvent().test(111113, CompleteStatus.STANDARD),
-            new CompletedEvent().test(111114, CompleteStatus.GOLD),
-            new CompletedEvent().test(111115, CompleteStatus.SILVER),
-            new CompletedEvent().test(111116, CompleteStatus.GOLD),
-            new CompletedEvent().test(111117, CompleteStatus.BRONZE),
-            new CompletedEvent().test(111119, CompleteStatus.STANDARD),
-            new CompletedEvent().test(111120, CompleteStatus.STANDARD),
-            new CompletedEvent().test(111121, CompleteStatus.STANDARD),
-            new CompletedEvent().test(111122, CompleteStatus.STANDARD)
+            new CompletedEvent().test(111111, CompleteStatus.STANDARD_T0),
+            new CompletedEvent().test(111112, CompleteStatus.GOLD_T3),
+            new CompletedEvent().test(111113, CompleteStatus.STANDARD_T0),
+            new CompletedEvent().test(111114, CompleteStatus.GOLD_T3),
+            new CompletedEvent().test(111115, CompleteStatus.SILVER_T2),
+            new CompletedEvent().test(111116, CompleteStatus.GOLD_T3),
+            new CompletedEvent().test(111117, CompleteStatus.BRONZE_T1),
+            new CompletedEvent().test(111119, CompleteStatus.STANDARD_T0),
+            new CompletedEvent().test(111120, CompleteStatus.STANDARD_T0),
+            new CompletedEvent().test(111121, CompleteStatus.STANDARD_T0),
+            new CompletedEvent().test(111122, CompleteStatus.STANDARD_T0)
         ]
     }
 

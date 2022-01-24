@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import './event_modal.css'
+import './modal.css'
 
 function getActivities(): void {
 }

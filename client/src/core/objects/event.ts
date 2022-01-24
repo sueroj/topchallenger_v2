@@ -14,7 +14,7 @@ export class EventsTable {
 
 export class Event {
     public id: number = 0
-    public title: string = ''
+    public name: string = ''
     public category_major: EventCategory = EventCategory.EVENT
     public category_minor: any = null
     // TODO: debug only, reset to false
@@ -23,6 +23,7 @@ export class Event {
     public start_datetime: number = 0
     public stop_datetime: number = 0
     public difficulty: number = 0
+    public img: string = ''
 
     public is_mappable: boolean = true
     public is_open: boolean = true
@@ -33,10 +34,10 @@ export class Event {
     public metrics: any = null
 
 
-    public test_event(id: number, title: string, coordinates: GeoJSON[], 
+    public test_event(id: number, name: string, coordinates: GeoJSON[], 
         start_datetime: any, stop_datetime: any, difficulty: number) {
             this.id = id
-            this.title = title
+            this.name = name
             this.coordinates = coordinates
             this.start_datetime = start_datetime
             this.stop_datetime = stop_datetime
