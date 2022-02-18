@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import './achievements.css';
+import ProgressBar from 'react-bootstrap/ProgressBar'
+import './achievements.css'
 
 import Events from 'core/libs/events'
 import Profile from 'core/objects/profile'
 import Achievement from 'core/objects/achievement'
 import Thumbnail from 'components/common/thumbnail/Thumbnail'
+import AchievementModal from 'components/common/modals/AchievementModal'
 
 type Props = {
     profile: Profile
@@ -21,9 +22,10 @@ type ThumbnailListShortProps = {
     achievements: Achievement[]
 }
 
-
+// TODO: Clean up due
 
 export default function Achievements(props: Props) {
+    const [modal, show_modal] = useState(false)
 
     // props.events.get_recent_achievements()
 
@@ -31,9 +33,16 @@ export default function Achievements(props: Props) {
 
     }, []
     )
+
+    function toggle_modal() {
+        show_modal(!modal)
+    }
+
     // TODO: Implement most recent achievements, e.g. achievements sorted by date of complement
     return (
         <div className='achievements-panel'>
+            <AchievementModal show={modal}/>
+
             <div className='right-panel-header'>Achievements</div>
 
             <div className='achievements-panel-thumbnail-header'>Most Recent</div>
@@ -45,6 +54,12 @@ export default function Achievements(props: Props) {
             <div className='achievements-panel-spacer' />
 
             <AchievementProgressBar label={'Achievements Progress'}/>
+
+            <div className='achievements-panel-spacer' />
+
+            <div className='panel-button-wrapper'>
+                <button className='panel-button' onClick={() => toggle_modal()}>Open Achievements</button>
+            </div>
         </div>
     );
 }

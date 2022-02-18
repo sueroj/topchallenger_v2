@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Overlay from 'react-bootstrap/Overlay'
-import Tooltip from 'react-bootstrap/Tooltip';
+import React, { useState, useEffect} from 'react';
 import './map.css';
 
 import Mapbox from 'core/libs/map';
@@ -14,51 +12,18 @@ type Props = {
 }
 
 export default function Map(props: Props) {
-    const [tooltip, set_tooltip] = useState(false)
-    const target = useRef(null)
-
-    function show_tooltip() {
-        set_tooltip(!tooltip)
-    }
-
     
     useEffect(() => {
-        const map: Mapbox = new Mapbox(props.events, props.toggles).draw()
-    }, [props]
+       new Mapbox(props.events, props.toggles).draw()
+    }, []
     )
 
     return (
         <div className='map-panel'>
-            {/* <Tooltip />*/}
-            <button ref={target} onClick={() => set_tooltip(!tooltip)}></button>
-
-            <Overlay target={target.current} show={tooltip} placement="right">
-            {(props: any) => (
-                <Tooltip id="overlay-example" {...props}>
-                My Tooltip
-                </Tooltip>
-            )}
-            </Overlay>
 
             {/* Mapbox */}
             <div id='map' className='map'></div>
+
         </div>
     );
 }
-
-// function Example() {
-//     const [show, setShow] = useState(false);
-//     const target = useRef(null);
-  
-//     return (
-//       <>
-//         <Button ref={target} onClick={() => setShow(!show)}>
-//           Click me!
-//         </Button>
-//         <Overlay target={target.current} show={show} placement="right">
-//           {(props) => (
-//             <Tooltip id="overlay-example" {...props}>
-//               My Tooltip
-//             </Tooltip>
-//           )}
-//         </Overlay>

@@ -6,7 +6,7 @@ Inherit left-panel-header
 .achievements-panel {
 
     width: 100%;
-    height: 25%;
+    height: 300px;
     margin-bottom: 5px;
     background-color: rgb(168, 168, 168);
     box-shadow: 2px 2px 2px black;
@@ -15,7 +15,7 @@ Inherit left-panel-header
 }
 
 .achievements-panel-spacer {
-    height: 20px;
+    height: 15px;
 }
 
 /* Thumbnails List */

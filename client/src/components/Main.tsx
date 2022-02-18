@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Http from 'core/libs/http';
 import Events from 'core/libs/events'
-// import PROFILE from 'core/objects/profile';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import './main.css';
 
 import Navigation from './navigation/Navigation'
-import Footer from './footer/Footer';
-import Panels from './panels/Panels';
-import { GeoJSON } from 'core/objects/misc';
-import Profiles from 'core/libs/profiles';
-import Modal from 'components/common/modal/Modal';
+import Footer from './footer/Footer'
+import Panels from './panels/Panels'
+import Profiles from 'core/libs/profiles'
+import Modal from 'components/common/modals/Modal'
+import Card from 'components/common/card/Card'
 
 
 export default function Main() {
@@ -20,7 +20,7 @@ export default function Main() {
 
     // Callbacks for modal toggles (to be passed to child components)
     const toggles = {
-        event_modal: toggle_event_modal,
+        event_modal: toggle_event_modal
     }
 
     // TODO: Eval if this action is performed twice

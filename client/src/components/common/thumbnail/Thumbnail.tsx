@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'react-bootstrap/Image'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
 import './thumbnail.css';
 
-import { Milestone, Zone, Course } from 'core/objects/event'
-import { Event } from 'core/objects/event'
-import { CompleteStatus } from 'core/enums/enums'
 import CompleteCanvas from 'core/canvas/complete'
+import { CompleteStatus } from 'core/enums/enums'
 import { EventCategory as CategoryEnumTypes } from 'core/enums/enums'
 import Item from 'core/objects/item'
+import { Event } from 'core/objects/event'
 import Achievement from 'core/objects/achievement'
-import Modal from 'components/common/modal/Modal'
-
-
+import { Milestone, Zone, Course } from 'core/objects/event'
+import Modal from 'components/common/modals/Modal'
 
 type Props = {
     data: Milestone | Zone | Course | Item | Achievement
@@ -23,7 +23,7 @@ type TierProps = {
 
 type CompleteProps = {
     event: Event
-   }
+}
 
 type CategoryProps = {
     category: CategoryEnumTypes
@@ -47,7 +47,6 @@ type StatusTimerProps = {
 // or Difficulty, but needs Tier and StatusTimer
 
 export default function Thumbnail(props: Props) {
-    // const event = props.event
     const [modal, set_modal] = useState(false)
 
     function toggle_modal() {
@@ -56,28 +55,49 @@ export default function Thumbnail(props: Props) {
 
     function bottom_left_select() {
         if (props.data instanceof Item) {
-            return <Quantity quantity={props.data.quantity}/>
+            return <Quantity quantity={props.data.quantity} />
         }
     }
+
+    const popover = (
+        <Popover id="popover-basic">
+            <Popover.Header as="h3">{props.data.name}</Popover.Header>
+            <Popover.Body>
+                Insert description here
+            </Popover.Body>
+        </Popover>
+    )
+
+    // function popover() {
+    //     return <Card data={props.data}/>
+    // }
 
     return (
         <>
             <Modal show={modal} toggle_modal={toggle_modal} />
 
-            <button className="thumbnail" onClick={toggle_modal}>
-                <Image className="thumbnail-img" src={props.data.img} alt={props.data.name} rounded />
-                {/* <Tier tier={props.data.tier} /> */}
-                {/* {props.completed.status ? completedBadgeSelect() :
+            {/* Tooltip definitions */}
+            <OverlayTrigger placement='top'
+                overlay={popover}>
+
+                <button className="thumbnail" onClick={toggle_modal}>
+
+                    <Image className="thumbnail-img" src={props.data.img} alt={props.data.name} rounded />
+
+                    {/* <Tier tier={props.data.tier} /> */}
+                    {/* {props.completed.status ? completedBadgeSelect() :
                     // Image style badges
                     <Image className="badge-img" src={importAsset("scheme_geometric/badges", props.challenge.ChallengeId)} alt={props.challenge.Name} rounded />}
                     {/* //  // Canvas style badges
                     // <BadgeCanvas id={props.challenge.ChallengeId} challenge={props.challenge} useDefault={true} />} */}
-                {/* <div className="badge-rp">{props.challenge.Rp} RP</div>
+                    {/* <div className="badge-rp">{props.challenge.Rp} RP</div>
                 <div className="badge-name-header">{props.challenge.Name}</div> */}
 
-                {/* Draw Difficulty (for events) or Quantity (for items) component */}
-                { bottom_left_select() }
-            </button>
+                    {/* Draw Difficulty (for events) or Quantity (for items) component */}
+                    {bottom_left_select()}
+                </button>
+
+            </OverlayTrigger>
         </>
 
         // <button onClick={() => toggle_modal()} className='thumbnail'>
@@ -85,21 +105,21 @@ export default function Thumbnail(props: Props) {
         // </button>
 
         // <button onClick={() => toggle_event_modal()} className='thumbnail'>
-            // <EventModal show={event_modal}/>
+        // <EventModal show={event_modal}/>
 
-            // <div className='thumbnail-info-display'>
-            //     <Complete event={event}/>
-            //     <div className='thumbnail-horizontal-divider'/>
-            //     <Category category={event.category_major}/>
-            // </div>
+        // <div className='thumbnail-info-display'>
+        //     <Complete event={event}/>
+        //     <div className='thumbnail-horizontal-divider'/>
+        //     <Category category={event.category_major}/>
+        // </div>
 
-            // <div className='thumbnail-vertical-divider' />
+        // <div className='thumbnail-vertical-divider' />
 
-            // <div className='thumbnail-info-display'>
-            //     <Difficulty difficulty={event.difficulty}/>
-            //     <div className='thumbnail-horizontal-divider'/>
-            //     <StatusTimer event={event}/>
-            // </div>
+        // <div className='thumbnail-info-display'>
+        //     <Difficulty difficulty={event.difficulty}/>
+        //     <div className='thumbnail-horizontal-divider'/>
+        //     <StatusTimer event={event}/>
+        // </div>
         // </button>
     );
 }
@@ -126,7 +146,7 @@ export function Complete(props: CompleteProps) {
         } else {
             // TODO: Eval use of height and width styles
             let canvas = new CompleteCanvas().render(event.id, event.complete_status)
-            set_canvas(<canvas className='complete-canvas' id={canvas.canvas_id} height='50' width='50'/>)
+            set_canvas(<canvas className='complete-canvas' id={canvas.canvas_id} height='50' width='50' />)
         }
     }, [event]
     )
@@ -142,7 +162,7 @@ export function Complete(props: CompleteProps) {
         } else {
             // TODO: Eval use of height and width styles
             let canvas = new CompleteCanvas().render(event.id, event.complete_status)
-            return <canvas className='complete-canvas' id={canvas.canvas_id} height='50' width='50'/>
+            return <canvas className='complete-canvas' id={canvas.canvas_id} height='50' width='50' />
         }
     }
 
@@ -151,7 +171,7 @@ export function Complete(props: CompleteProps) {
 
             {/* Tooltip showing datetime completed and time, if timed event */}
             {/* { draw_complete_canvas() } */}
-            { canvas }
+            {canvas}
             {console.log('Complete: draw canvas')}
 
         </div>

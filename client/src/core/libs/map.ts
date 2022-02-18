@@ -24,6 +24,8 @@ export default class Mapbox {
 
 
     public draw() {
+        console.log('Debug: render map') // TODO: debug only
+
         this.center = this.get_center()
         this.draw_events()
 
@@ -112,6 +114,7 @@ export default class Mapbox {
                 this_obj.new_layer(event)
                 this_obj.configurePointer(event)
                 this_obj.configureModalOnClick(event)
+                // this_obj.configure_card_on_hover(event)
             });
 
         })
@@ -168,10 +171,7 @@ export default class Mapbox {
         map.on('mouseenter', event.name, function () {
             map.getCanvas().style.cursor = 'pointer'
         });
-        // map.on('mouseenter', event.title, function () {
-        //     this_obj.target.current = event.title
-        //     this_obj.show_tooltip()
-        // });
+
         // Change it back to a pointer when it leaves
         map.on('mouseleave', event.name, function () {
             map.getCanvas().style.cursor = ''
@@ -182,11 +182,41 @@ export default class Mapbox {
         let this_obj = this
         let map = this.map
         
-        // On click, open event modal
+        // On click, open modal for the event
         map.on('click', event.name, function () {
             this_obj.toggles.event_modal()
         })
+    }
 
+    private configure_card_on_hover(event: MappableEventCategory) {
+        let this_obj = this
+        let map = this.map
+
+        const popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+        })
+
+        // On hover, show card describing event
+        map.on('mouseenter', event.name, function(e) {
+            // Copy coordinates array.
+            // const coordinates = event.coordinates[0].get()  // TODO review and update
+            // const description: = e.features[0].properties.description // TODO review and update
+            const coordinates = [52.25007458166482, 0.09771024674431904]
+
+            // Ensure that if the map is zoomed out such that multiple
+            // copies of the feature are visible, the popup appears
+            // over the copy being pointed to.
+            // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            // coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            // }
+
+            popup.setLngLat([52.25007458166482, 0.09771024674431904]).setHTML('<p>hello</p>').addTo(map)
+        })
+
+        map.on('mouseleave', event.name, function () {
+            popup.remove();
+        })
     }
 
 }

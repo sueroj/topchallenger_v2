@@ -12,9 +12,11 @@
     line-height: normal;
     overflow: hidden;
     padding: 2px;
+    transition-duration: 0.2s;
 }
 
 .thumbnail:hover {
+    transition-duration: 0.2s;
     background-color: rgb(88, 116, 199);
 }
 
